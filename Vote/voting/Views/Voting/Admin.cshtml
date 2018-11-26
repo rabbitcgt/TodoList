@@ -1,0 +1,40 @@
+@model IEnumerable<voting.Person>
+
+<h2></h2>
+
+<p>
+    <a asp-action="Create">新增人員</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                姓名
+            </th>
+            <th>
+                票數
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a a asp-action="Count" asp-route-id="@item.PersonID">投他一票</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonID">編輯</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonID">刪除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
